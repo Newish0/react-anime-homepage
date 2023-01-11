@@ -48,3 +48,13 @@ $card-size: 200px;
     grid-template-columns: repeat(auto-fit, minmax($card-size, 1fr));
     gap: $card-size * 0.1;
 }
+
+.LoadMore {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1rem;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
