@@ -5,6 +5,9 @@
 
 .App {
     padding: 8px;
+}
+
+.App-main {
     width: min(1200px, 100%);
     margin-inline: auto;
 }
@@ -15,6 +18,15 @@
 }
 
 .App-header {
+    background-color: #333;
+    border-radius: 0 !important;
+    margin: -8px -8px 0 -8px !important;
+    padding: 8px;
+}
+
+.App-header .items-wrapper {
+    width: min(1200px, 100%);
+    margin-inline: auto;
     display: flex;
     flex-flow: row nowrap;
     gap: 8px;

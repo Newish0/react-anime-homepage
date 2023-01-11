@@ -8,16 +8,23 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <span>Item 1</span>
-                <span>Item 2</span>
-                <span>Item 3</span>
-                <span>Item 4</span>
+                <div className="items-wrapper">
+                    <span>Item 1</span>
+                    <span>Item 2</span>
+                    <span>Item 3</span>
+                    <span>Item 4</span>
+                </div>
             </header>
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/anime/:id" element={null /* TODO COMPONENT */} />
-            </Routes>
+            <main className="App-main">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="/anime/:id"
+                        element={null /* TODO COMPONENT */}
+                    />
+                </Routes>
+            </main>
         </div>
     );
 }

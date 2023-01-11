@@ -12,26 +12,37 @@ $edge-pad: 32px;
 
     .Info {
         z-index: 1;
+        max-width: 50%;
+        max-height: 100%;
 
         .Title {
             margin-block: 8px;
+            font-size: 2rem;
+            color: #eee;
         }
 
         .Tags {
             display: flex;
             flex-flow: row wrap;
             gap: 8px;
+            color: #ccc;
         }
 
-        // .Description {
-        // }
+        .Description {
+            $max-lines-num: 12;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: $max-lines-num; 
+            line-clamp: $max-lines-num;
+            -webkit-box-orient: vertical;
+            max-height: 100%;
+            color: #ccc;
+        }
     }
 
-    .Poster {
+    .Cover {
         flex-shrink: 1;
-        // height: min-content;
-        // max-height: 400px;
-        // max-width: 50%;
 
         flex-shrink: 0;
         flex-grow: 0;
@@ -51,25 +62,4 @@ $edge-pad: 32px;
 
         transition: all 1s;
     }
-
-    // @media only screen and (max-width: 840px) {
-    //     .Poster {
-    //         flex-shrink: 0;
-    //         flex-grow: 0;
-    //         height: 100%;
-    //         position: absolute;
-    //         right: 0;
-    //         top: 0;
-
-    //         mask-image: linear-gradient(
-    //             to left,
-    //             rgba(0, 0, 0, 1),
-    //             rgba(0, 0, 0, 0)
-    //         );
-    //     }
-
-    //     .Info {
-    //         max-width: 75%;
-    //     }
-    // }
 }

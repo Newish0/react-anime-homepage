@@ -3,7 +3,7 @@ import "./BannerShowCard.scss";
 
 interface BannerShowCardProps {
     title: string;
-    poster: string;
+    cover: string;
     description: string;
     tags?: Array<string>;
 }
@@ -26,9 +26,9 @@ export default function BannerShowCard(props: BannerShowCardProps) {
             </div>
 
             <img
-                className="Poster"
-                src={props.poster}
-                alt={`Poster of ${props.title}`}
+                className="Cover"
+                src={props.cover}
+                alt={`Cover of ${props.title}`}
             />
         </div>
     );

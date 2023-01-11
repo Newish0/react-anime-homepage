@@ -1,0 +1,50 @@
+$card-size: 200px;
+
+.ShowCard {
+    display: block;
+    position: relative;
+
+    .Poster {
+        width: 100%;
+    }
+
+    .Title {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        margin-block: 0;
+        width: 100%;
+        padding-top: 2rem;
+        padding-bottom: 0.8rem;
+        padding-inline: 0.2rem;
+        box-sizing: border-box;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #dedede;
+
+        background: linear-gradient(
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 1)
+        );
+    }
+
+    .Subtype {
+        position: absolute;
+        left: 0;
+        top: 16px;
+        width: 48px;
+        font-size: 12px;
+        text-align: center;
+        padding: 4px;
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.ShowCardPool {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($card-size, 1fr));
+    gap: $card-size * 0.1;
+}

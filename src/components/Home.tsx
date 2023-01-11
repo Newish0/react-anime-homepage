@@ -9,18 +9,48 @@ import { Pagination } from "swiper";
 import "swiper/css/pagination";
 
 import BannerShowCard from "./ShowCards/BannerShowCard";
+import ShowCardPool from "./ShowCards/ShowCardPool";
+import ShowCard from "./ShowCards/ShowCard";
 
 export default function Home() {
     const api = new Kitsu();
 
     // Wrap queryFn to allow passing params
-    const { status, data, error } = useQuery({
-        queryKey: ["seasonNow"],
-        queryFn: () => api.get("anime"),
+    const {
+        status: bStatus,
+        data: bData,
+        error: bError,
+    } = useQuery({
+        queryKey: ["bannerShows"],
+        queryFn: () =>
+            api.get("anime", {
+                params: {
+                    include: "genres",
+                    sort: "popularityRank",
+                },
+            }),
     });
 
-    if (status === "loading") return <h1>Loading...</h1>;
-    if (status === "error") return <h1>{JSON.stringify(error)}</h1>;
+    const {
+        status: pStatus,
+        data: pData,
+        error: pError,
+    } = useQuery({
+        queryKey: ["poolShows"],
+        queryFn: () =>
+            api.get("anime", {
+                params: {
+                    include: "genres",
+                    sort: "popularityRank",
+                },
+            }),
+    });
+
+    if (bStatus === "loading") return <h1>Loading...</h1>;
+    if (bStatus === "error") return <h1>{JSON.stringify(bError)}</h1>;
+
+    if (pStatus === "loading") return <h1>Loading...</h1>;
+    if (pStatus === "error") return <h1>{JSON.stringify(bError)}</h1>;
 
     return (
         <div className="Home">
@@ -36,7 +66,7 @@ export default function Home() {
                 onSwiper={(swiper) => console.log(swiper)}
                 className="banner"
             >
-                {data.data.map((item: any, i: number) => {
+                {bData.data.map((item: any, i: number) => {
                     return (
                         <SwiperSlide
                             className="slide"
@@ -45,16 +75,34 @@ export default function Home() {
                             <BannerShowCard
                                 title={item.canonicalTitle}
                                 description={item.synopsis}
-                                poster={item.coverImage?.original}
-                                // tags={item.genres.map((g: any) => g.name)}
+                                cover={
+                                    item.coverImage?.original ??
+                                    item.posterImage?.original
+                                }
+                                tags={item.genres.data.map((g: any) => g.name)}
                             />
                         </SwiperSlide>
                     );
                 })}
             </Swiper>
+            
+            <br />
+
+            <ShowCardPool>
+                {pData.data.map((item: any, i: number) => {
+                    return (
+                        <ShowCard
+                            title={item.canonicalTitle}
+                            poster={item.posterImage?.small}
+                            subtype={item.subtype}
+                            key={`homePagePoolCard-${i}`}
+                        ></ShowCard>
+                    );
+                })}
+            </ShowCardPool>
 
             <hr />
-            <pre>{JSON.stringify(data, null, 4)}</pre>
+            <pre>{JSON.stringify(bData, null, 4)}</pre>
         </div>
     );
 }
