@@ -4,6 +4,10 @@
     --max-width: 1800px;
 }
 
+body {
+    background-color: #000;
+}
+
 #root {
     background-color: #111;
     color: #eee;
@@ -56,11 +60,6 @@
     border-radius: 12px;
 }
 
-.Home {
-    min-height: 100vh;
-    margin-block: 8px;
-}
-
 .Home .banner {
     height: 500px;
 }
@@ -77,4 +76,19 @@
 .center {
     margin-inline: auto;
     text-align: center;
+}
+
+.page {
+    min-height: 50vh;
+    margin-block: 8px;
+}
+
+.clean-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.clean-link:visited {
+    text-decoration: none;
+    color: inherit;
 }

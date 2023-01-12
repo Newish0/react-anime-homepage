@@ -125,7 +125,7 @@ export default function Home() {
     );
 
     return (
-        <div className="Home">
+        <div className="Home page">
             <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
@@ -167,7 +167,7 @@ export default function Home() {
                 cardPool
             )}
 
-            <hr />
+            {/* <hr />
             <div>
                 <pre
                     style={{
@@ -180,7 +180,7 @@ export default function Home() {
                 >
                     {JSON.stringify(bData, null, 4)}
                 </pre>
-            </div>
+            </div> */}
         </div>
     );
 }
