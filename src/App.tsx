@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
+import logo from "./logo.png";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
@@ -9,10 +9,14 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className="items-wrapper">
-                    <span>Item 1</span>
+                    <span>
+                        <img src={logo} alt="logo" className="App-logo" />
+                        <span className="App-name">LBox</span>
+                    </span>
+                    {/* <span>Item 1</span>
                     <span>Item 2</span>
                     <span>Item 3</span>
-                    <span>Item 4</span>
+                    <span>Item 4</span> */}
                 </div>
             </header>
 

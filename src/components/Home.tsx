@@ -14,6 +14,8 @@ import ShowCard from "./ShowCards/ShowCard";
 
 import Season from "../season";
 import axios from "axios";
+import { getParameterByName } from "../misc";
+import ReactLoading from "react-loading";
 
 export default function Home() {
     const api = new Kitsu();
@@ -38,11 +40,6 @@ export default function Home() {
             }),
     });
 
-    const page = {
-        limit: 20,
-        offset: 0,
-    };
-
     const {
         status: pStatus,
         data: pData,
@@ -52,33 +49,80 @@ export default function Home() {
         fetchNextPage,
     } = useInfiniteQuery({
         queryKey: ["poolShows", "infinite"],
-        getNextPageParam: () => (page.offset += page.limit),
-        queryFn: ({ pageParam = page }) => {
+        getNextPageParam: (prevData: any) => {
+            let nextUrl = decodeURIComponent(prevData.links.next);
+
+            if (nextUrl === "undefined") return undefined;
+
+            return {
+                limit: getParameterByName("page[limit]", nextUrl),
+                offset: getParameterByName("page[offset]", nextUrl),
+            };
+        },
+        queryFn: ({
+            pageParam = {
+                limit: 20,
+                offset: 0,
+            },
+        }) => {
             return api.get("anime", {
                 params: {
                     include: "genres",
                     sort: "-averageRating",
                     filter: { season, seasonYear },
-                    page,
+                    page: pageParam,
                 },
             });
         },
     });
 
     const infiniteScroll = {
-        onLoadMore: (evt: SyntheticEvent) => {
+        onLoadMore: () => {
             fetchNextPage();
         },
-        useClick: true,
+        useClick: false,
+        hasNext: hasNextPage ?? false,
     };
 
-    if (bStatus === "loading") return <h1>Loading...</h1>;
+    // if (bStatus === "loading") return <h1>Loading...</h1>;
     if (bStatus === "error") return <h1>{JSON.stringify(bError)}</h1>;
 
-    if (pStatus === "loading") return <h1>Loading...</h1>;
+    // if (pStatus === "loading") return <h1>Loading...</h1>;
     if (pStatus === "error") return <h1>{JSON.stringify(bError)}</h1>;
 
-    console.log(pData);
+    const slides = bData?.data.map((item: any, i: number) => {
+        return (
+            <SwiperSlide className="slide" key={`homePageTopSlide-${i}`}>
+                <BannerShowCard
+                    title={item.canonicalTitle}
+                    description={item.synopsis}
+                    cover={
+                        item.coverImage?.original ?? item.posterImage?.original
+                    }
+                    tags={item.genres.data.map((g: any) => g.name)}
+                />
+            </SwiperSlide>
+        );
+    });
+
+    const cardPool = (
+        <ShowCardPool infiniteScroll={infiniteScroll}>
+            {pData?.pages.map((p) =>
+                p.data.map((item: any, i: number) => {
+                    return (
+                        <ShowCard
+                            title={item.canonicalTitle}
+                            poster={item.posterImage?.small}
+                            subtype={item.subtype}
+                            id={item.id}
+                            type={item.type}
+                            key={`homePagePoolCard-${i}`}
+                        ></ShowCard>
+                    );
+                })
+            )}
+        </ShowCardPool>
+    );
 
     return (
         <div className="Home">
@@ -94,46 +138,49 @@ export default function Home() {
                 onSwiper={(swiper) => console.log(swiper)}
                 className="banner"
             >
-                {bData.data.map((item: any, i: number) => {
-                    return (
-                        <SwiperSlide
-                            className="slide"
-                            key={`homePageTopSlide-${i}`}
-                        >
-                            <BannerShowCard
-                                title={item.canonicalTitle}
-                                description={item.synopsis}
-                                cover={
-                                    item.coverImage?.original ??
-                                    item.posterImage?.original
-                                }
-                                tags={item.genres.data.map((g: any) => g.name)}
-                            />
-                        </SwiperSlide>
-                    );
-                })}
+                {bStatus === "loading" ? (
+                    <SwiperSlide>
+                        <ReactLoading
+                            type={"bubbles"}
+                            color={"#e39"}
+                            height={667}
+                            width={375}
+                            className="center"
+                        />
+                    </SwiperSlide>
+                ) : (
+                    slides
+                )}
             </Swiper>
 
             <br />
 
-            <ShowCardPool infiniteScroll={infiniteScroll}>
-                {pData.pages.map((p) =>
-                    p.data.map((item: any, i: number) => {
-                        console.log(item);
-                        return (
-                            <ShowCard
-                                title={item.canonicalTitle}
-                                poster={item.posterImage?.small}
-                                subtype={item.subtype}
-                                key={`homePagePoolCard-${i}`}
-                            ></ShowCard>
-                        );
-                    })
-                )}
-            </ShowCardPool>
+            {pStatus === "loading" ? (
+                <ReactLoading
+                    type={"bubbles"}
+                    color={"#e39"}
+                    height={667}
+                    width={375}
+                    className="center"
+                />
+            ) : (
+                cardPool
+            )}
 
             <hr />
-            <pre>{JSON.stringify(bData, null, 4)}</pre>
+            <div>
+                <pre
+                    style={{
+                        position: "relative",
+                        display: "block",
+                        width: "100%",
+                        textOverflow: "ellipsis",
+                        overflow: "hidden",
+                    }}
+                >
+                    {JSON.stringify(bData, null, 4)}
+                </pre>
+            </div>
         </div>
     );
 }

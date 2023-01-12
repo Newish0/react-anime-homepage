@@ -1,7 +1,12 @@
+:root {
+    --theme-color: #e39;
+    --swiper-theme-color: #e39 !important;
+    --max-width: 1800px;
+}
+
 #root {
     background-color: #111;
     color: #eee;
-    overflow: hidden;
 }
 
 .App {
@@ -9,32 +14,51 @@
 }
 
 .App-main {
-    width: min(1200px, 100%);
+    width: min(var(--max-width), 100%);
     margin-inline: auto;
 }
 
 .App-logo {
-    height: 40vmin;
+    height: 48px;
     pointer-events: none;
 }
 
+.App-name {
+    position: relative;
+    font-size: 24px;
+    line-height: 24px;
+    bottom: 16px;
+    padding-left: 8px;
+    font-weight: 700;
+}
+
 .App-header {
-    background-color: #333;
+    position: sticky;
+    top: 0;
+    background-color: #222;
     border-radius: 0 !important;
     margin: -8px -8px 0 -8px !important;
     padding: 8px;
+    z-index: 10;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.75);
 }
 
 .App-header .items-wrapper {
-    width: min(1200px, 100%);
+    width: min(var(--max-width), 100%);
     margin-inline: auto;
     display: flex;
     flex-flow: row nowrap;
-    gap: 8px;
+    gap: 32px;
+    align-items: center;
 }
 
 .App * {
     border-radius: 12px;
+}
+
+.Home {
+    min-height: 100vh;
+    margin-block: 8px;
 }
 
 .Home .banner {
@@ -48,4 +72,9 @@
 .tag,
 .Tag {
     font-size: 14px;
+}
+
+.center {
+    margin-inline: auto;
+    text-align: center;
 }
