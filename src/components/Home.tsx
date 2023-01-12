@@ -82,6 +82,7 @@ export default function Home() {
         },
         useClick: false,
         hasNext: hasNextPage ?? false,
+        isFetching: isFetchingNextPage,
     };
 
     // if (bStatus === "loading") return <h1>Loading...</h1>;
@@ -143,8 +144,8 @@ export default function Home() {
                         <ReactLoading
                             type={"bubbles"}
                             color={"#e39"}
-                            height={667}
-                            width={375}
+                            height={400}
+                            width={300}
                             className="center"
                         />
                     </SwiperSlide>
@@ -159,8 +160,8 @@ export default function Home() {
                 <ReactLoading
                     type={"bubbles"}
                     color={"#e39"}
-                    height={667}
-                    width={375}
+                    height={400}
+                    width={300}
                     className="center"
                 />
             ) : (
