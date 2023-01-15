@@ -18,7 +18,6 @@ body {
 }
 
 .App-main {
-    width: min(var(--max-width), 100%);
     margin-inline: auto;
 }
 
@@ -48,7 +47,6 @@ body {
 }
 
 .App-header .items-wrapper {
-    width: min(var(--max-width), 100%);
     margin-inline: auto;
     display: flex;
     flex-flow: row nowrap;
@@ -73,6 +71,11 @@ body {
     font-size: 14px;
 }
 
+.mid-container {
+    width: min(var(--max-width), 100%);
+    margin-inline: auto;
+}
+
 .center {
     margin-inline: auto;
     text-align: center;
@@ -91,4 +94,19 @@ body {
 .clean-link:visited {
     text-decoration: none;
     color: inherit;
+}
+
+.bgimg {
+    position: absolute;
+    left: 0;
+    margin-top: -8px;
+    border-radius: 0;
+    filter: brightness(0.6) blur(2px);
+    z-index: 0;
+}
+
+.center-box {
+    position: relative;
+    margin: auto;
+    width: min(95%, calc(var(--max-width) * 0.5));
 }

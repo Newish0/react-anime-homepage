@@ -73,3 +73,41 @@ $card-size: 200px;
 .LoadMore[hidden] {
     display: none;
 }
+
+.DetailShowCard {
+    display: grid;
+    grid-template-columns: 33% 66%;
+    gap: 24px;
+    justify-content: space-evenly;
+    max-height: 400px;
+
+    .Poster {
+        width: 100%;
+    }
+
+    .Title {
+        margin-block: 6px;
+    }
+
+    .Subtitle {
+        margin-block: 6px;
+        color: #ddd;
+    }
+
+    .Description {
+        width: 100%;
+        max-height: 100%;
+        color: #ddd;
+    }
+
+    .Date {
+        margin-block: 8px;
+        
+
+        p {
+            margin-block: 0;
+            font-size: 12px;
+            color: #ccc;
+        }
+    }
+}

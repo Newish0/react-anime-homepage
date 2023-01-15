@@ -9,7 +9,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <div className="items-wrapper">
+                <div className="items-wrapper mid-container">
                     <Link to={"/"} className="clean-link">
                         <span>
                             <img src={logo} alt="logo" className="App-logo" />

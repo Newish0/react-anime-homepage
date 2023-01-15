@@ -126,7 +126,7 @@ export default function Home() {
     );
 
     return (
-        <div className="Home page">
+        <div className="Home page mid-container">
             <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
