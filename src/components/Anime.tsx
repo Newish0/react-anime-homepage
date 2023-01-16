@@ -87,7 +87,7 @@ export default function Anime(props: AnimeProps) {
                 className="bgimg"
             ></Banner>
 
-            <div className="center-box" style={{top: "200px"}}>
+            <div className="center-box" style={{ top: "200px" }}>
                 <DetailShowCard
                     title={canonicalTitle}
                     jpTitle={jpTitle}
@@ -95,7 +95,7 @@ export default function Anime(props: AnimeProps) {
                     date={{ start: startDate, end: endDate, tba }}
                     status={status}
                     subtype={subtype}
-                    tags={genres}
+                    tags={genres.map((g: { name: string }) => g.name)}
                     description={synopsis}
                 />
             </div>

@@ -100,9 +100,14 @@ $card-size: 200px;
         color: #ddd;
     }
 
+    .Tags {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 8px;
+    }
+
     .Date {
         margin-block: 8px;
-        
 
         p {
             margin-block: 0;

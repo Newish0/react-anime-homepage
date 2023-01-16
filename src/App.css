@@ -54,6 +54,13 @@ body {
     align-items: center;
 }
 
+.App-header-search {
+    position: relative;
+    left: 0;
+    width: 50%;
+    height: 100%;
+}
+
 .App * {
     border-radius: 12px;
 }
@@ -69,6 +76,10 @@ body {
 .tag,
 .Tag {
     font-size: 14px;
+}
+
+.margin {
+    margin: 4px;
 }
 
 .mid-container {
@@ -109,4 +120,16 @@ body {
     position: relative;
     margin: auto;
     width: min(95%, calc(var(--max-width) * 0.5));
+}
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
 }

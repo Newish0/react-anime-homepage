@@ -1,0 +1,49 @@
+$space: 14px;
+$resultHeight: 120px;
+$blur: 16px;
+$brightness: 75%;
+
+.Search {
+    position: absolute;
+    width: 100%;
+
+    .SearchBox {
+        display: block;
+        padding-inline: $space;
+        padding-block: $space;
+        width: 50%;
+        float: right;
+        box-sizing: border-box;
+        font-size: large;
+        transition: width 100ms;
+    }
+
+    .SearchBox:focus {
+        width: 100%;
+    }
+
+    .Results {
+        position: relative;
+        margin-block: $space;
+        backdrop-filter: blur($blur) brightness($brightness);
+        padding: $space * 2;
+        margin-top: $space * 4;
+    }
+}
+
+.SearchResultPair {
+    height: $resultHeight;
+    display: flex;
+    align-items: center;
+    gap: $space;
+    margin-block: $space;
+
+    .Title {
+        margin-block: auto;
+        width: 100%;
+    }
+
+    .Poster {
+        height: 100%;
+    }
+}
