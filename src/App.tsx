@@ -1,12 +1,22 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+    BrowserRouter,
+    Link,
+    Route,
+    Routes,
+    useLocation,
+    Redirect,
+    Navigate,
+} from "react-router-dom";
 import Home from "./components/Home";
 import Anime from "./components/Anime";
 import Search from "./components/Search";
 
 function App() {
+    const { pathname } = useLocation();
+
     return (
         <div className="App">
             <header className="App-header">
@@ -39,6 +49,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/anime/:id" element={<Anime />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </main>
         </div>
