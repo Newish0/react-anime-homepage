@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.374671d5.css",
-    "main.js": "./static/js/main.cf95f40d.js",
-    "static/js/787.bd40049e.chunk.js": "./static/js/787.bd40049e.chunk.js",
-    "static/media/logo.png": "./static/media/logo.d467e0c379f41710aa07.png",
-    "index.html": "./index.html",
-    "main.374671d5.css.map": "./static/css/main.374671d5.css.map",
-    "main.cf95f40d.js.map": "./static/js/main.cf95f40d.js.map",
-    "787.bd40049e.chunk.js.map": "./static/js/787.bd40049e.chunk.js.map"
+    "main.css": "/react-anime-page/static/css/main.374671d5.css",
+    "main.js": "/react-anime-page/static/js/main.c54125e1.js",
+    "static/js/787.bd40049e.chunk.js": "/react-anime-page/static/js/787.bd40049e.chunk.js",
+    "static/media/logo.png": "/react-anime-page/static/media/logo.d467e0c379f41710aa07.png",
+    "index.html": "/react-anime-page/index.html",
+    "main.374671d5.css.map": "/react-anime-page/static/css/main.374671d5.css.map",
+    "main.c54125e1.js.map": "/react-anime-page/static/js/main.c54125e1.js.map",
+    "787.bd40049e.chunk.js.map": "/react-anime-page/static/js/787.bd40049e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.374671d5.css",
-    "static/js/main.cf95f40d.js"
+    "static/js/main.c54125e1.js"
   ]
 }
