@@ -23,10 +23,16 @@ export const RelationVisWrapper = ({
     const nodeSelectHandler = (params: any) => {};
 
     const progressHandler = (percentage: number, message: string) => {
-        setLoadingData({
-            percentage,
-            message,
-        });
+        if (
+            !percentage ||
+            loadingData.percentage < percentage ||
+            loadingData.message !== message
+        ) {
+            setLoadingData({
+                percentage,
+                message,
+            });
+        }
     };
 
     const networkNoDataHandler = (noData: boolean) => {
