@@ -1,0 +1,29 @@
+input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.poster-and-title {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 10px;
+    gap: 12px;
+    margin-block: 12px;
+    cursor: pointer;
+}
+
+.poster-and-title img {
+    width: 64px;
+}
+
+.search-container {
+    position: relative;
+    z-index: 2;
+}
+
+.search-results {
+    position: absolute;
+    background-color: #fff;
+    width: -webkit-fill-available;
+}

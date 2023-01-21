@@ -4,6 +4,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Banner from "./Banner";
 import DetailShowCard from "./ShowCards/DetailShowCard";
+import KitsuRelation from "./ARG/RelationNetwork";
+import { RelationVisWrapper } from "./RelationVisWrapper";
 
 interface AnimeProps {}
 
@@ -79,6 +81,8 @@ export default function Anime(props: AnimeProps) {
         titles: { en_jp: jpTitle },
     } = data.data;
 
+    const topSectionHeight = "200px";
+
     return (
         <div className="Anime page">
             <Banner
@@ -87,7 +91,7 @@ export default function Anime(props: AnimeProps) {
                 className="bgimg"
             ></Banner>
 
-            <div className="center-box" style={{ top: "200px" }}>
+            <div className="center-box" style={{ top: topSectionHeight }}>
                 <DetailShowCard
                     title={canonicalTitle}
                     jpTitle={jpTitle}
@@ -99,8 +103,26 @@ export default function Anime(props: AnimeProps) {
                     description={synopsis}
                 />
             </div>
+            
+            <br />
+            <br />
 
-            <div className="mid-container">
+
+            <div
+                className="mid-container"
+                style={{ position: "relative", top: topSectionHeight }}
+            >   
+
+                <div>
+                    <h2>Relations</h2>
+                    <RelationVisWrapper
+                        id={id ?? 0}
+                        type="anime"
+                        style={{ position: "relative", height: "1000px" }}
+                    ></RelationVisWrapper>
+                </div>
+
+                <hr />
                 <pre
                     style={{
                         position: "relative",
