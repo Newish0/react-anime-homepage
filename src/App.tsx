@@ -28,7 +28,7 @@ function App() {
                                     alt="logo"
                                     className="App-logo"
                                 />
-                                <span className="App-name">LBox</span>
+                                <span className="App-name">React Anime</span>
                             </span>
                         </Link>
                     </div>
